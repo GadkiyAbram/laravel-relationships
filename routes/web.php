@@ -11,25 +11,17 @@
 |
 */
 
-//Route::get('/', function () {
-//
-//    $user = factory(\App\User::class)->create();    //creates a new User;
-//
-//    $user->phone()->create([
-//        'phone' => '222-333-4444',
-//    ]);
-//});
-
 Route::get('/', function (){
 
-//    $user = \App\User::first();
-//
-//    $user->roles()->sync([2, 4]);   //sync - will erase former roles and replace with the given ones
-//
-//    $user->roles()->syncWithoutDetaching([3]);  //will add the given role without deleting the previous ones
+    $user = \App\User::first();
 
-    $role = \App\Role::find(4);
+//    $user->roles()->sync([
+//        1 => [
+//            'name' => 'Abram',
+//        ]
+//    ]);
 
-    $role->users()->sync([5]);
+    dd($user->roles->first()->pivot->name);
 
 });
+
