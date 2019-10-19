@@ -22,29 +22,14 @@
 
 Route::get('/', function (){
 
-    $user = factory(\App\User::class)->create();
-
-    //Option 1:
-//    $post = new \App\Post([
-//        'title' => 'Title Here',
-//        'body' => 'body Here',
-//    ]);
+//    $user = \App\User::first();
 //
-//    $user->posts()->save($post);
+//    $user->roles()->sync([2, 4]);   //sync - will erase former roles and replace with the given ones
+//
+//    $user->roles()->syncWithoutDetaching([3]);  //will add the given role without deleting the previous ones
 
-    //Option 2: - preferable one
+    $role = \App\Role::find(4);
 
-    $user->posts()->create([
-        'title' => 'Title Here',
-        'body' => 'body Here',
-    ]);
-
-    //Updating:
-    $user->posts->first()->title = 'New Title';
-    $user->posts->first()->body = 'New Body';
-
-    $user->push();
-
-    return $user->posts;
+    $role->users()->sync([5]);
 
 });
