@@ -41,4 +41,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Phone::class);
     }
+
+    public function posts()     //need PLURAL!!!
+    {
+        return $this->hasMany(\App\Post::class);
+    }
 }
